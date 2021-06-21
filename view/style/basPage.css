@@ -1,0 +1,1163 @@
+
+/* ----------------------------------------------------- Media Responsive ----------------------------------------------------- */
+@media screen and ( min-width: 440px) {
+        /* Container */
+    .infosScroll {
+        font-size: 1em;
+        margin: 150px 20%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        row-gap: 150px;
+        align-content: center;
+    }
+    /* texts */
+    .infosScroll section {
+        font-size: 4em;
+        margin-bottom: 100px;
+        margin-top: 100px;
+    }
+    .infosScroll h1 {
+        font-size: 3em;
+        font-weight:400;
+        text-align: center;
+        margin-bottom: 10px;
+        position: relative;
+
+    }
+    .infosScroll p {
+        font-size: 1em;
+        font-weight:normal;
+        text-align: center;
+        position: absolute;
+        width: 80%;
+        margin-left: 50%;
+        transform: translateX(-50%);
+    }
+    .infosScroll span {
+        display: block;
+        width: 200px;
+        font-weight:normal;
+        text-align: right;
+    }
+
+    /* Marqueur jaune */
+    .infosScroll section em {
+        background-color: rgb(238, 238, 153);
+    }
+    /* sous lignement */
+    .infosScroll .line:after {
+        display: block;
+        content: '';
+        width: 50%;
+        height: 1px;
+        background: black;
+        position: absolute;
+        bottom: 8%;
+        transform: rotate(-2deg);
+        left: 35%;
+    }
+    /* ---------------------------------- Les Sections ---------------------------------- */
+    /* Graphique Pie */
+    #sectionPie {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        height: 450px;
+        width: 100vw;
+    }
+    #fichePie {
+        position: relative;
+        width: 1000px;
+        top: 0;
+        z-index:-1;
+        display: none;
+    }
+    #piechart {
+        position: absolute;
+        transform: rotate(0deg);
+        height: 550px;
+        border-bottom: 100px;
+        top: -100px;
+    }
+    #piechartresp {
+        display:none
+    }
+    /* Labels */
+    #pielabel1 {
+        color: white;
+        position: absolute;
+        top: 20vh;
+    }
+    #pielabel2 {
+        color: white;
+        position: absolute;
+        top: 25vh;
+    }
+    #pielabel3 {
+        color: white;
+        position: absolute;
+        top: 30vh;
+    }
+    #pielabel4 {
+        color: white;
+        position: absolute;
+        top: 40vh;
+    }
+    /* Message de détail */
+    #detail1 {
+        display: inline-block;
+        position: relative;
+        z-index: 10;
+        top: -50px;
+        right: -55%;
+        text-align: left;
+        align-self: center;
+        width: 450px;
+
+    }
+    #Franke {
+        position: absolute;
+        bottom: 0;
+        right: 10%;
+    }
+    
+    /*  Rect */
+    #flexrect {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        row-gap: 10px;
+        top:400px;
+    }
+    #rect1 {
+        position: relative;
+        height: 50px;
+        width: 1000px;
+        background-color: #1E1E1E;
+        color: white;
+        padding-left: 10px ;
+        padding-top: 5px ;
+        margin-top: 100px
+    }
+    #rect1::after {
+        content: "32%";
+        position: absolute;
+        top: 5px;
+        z-index: 1000;
+        color: #1E1E1E;
+    }
+    #rect2 {
+        position: relative;
+        height: 50px;
+        width: 750px;
+        background-color: #1E1E1E;
+        color: white;
+        padding-left: 10px ;
+        padding-top: 5px ;
+    }
+    #rect2::after {
+        content: "25%";
+        position: absolute;
+        top: 5px;
+        color: #1E1E1E;
+    }
+    #rect3 {
+        position: relative;
+        height: 50px;
+        width: 600px;
+        background-color: #1E1E1E;
+        color: white;
+        padding-left: 10px ;
+        padding-top: 5px ;
+    }
+    #rect3::after {
+        content: "20%";
+        position: absolute;
+        top: 5px;
+        color: #1E1E1E;
+    }
+    #rect4 {
+        position: relative;
+        height: 50px;
+        width: 400px;
+        background-color: #1E1E1E;
+        color: white;
+        padding-left: 10px ;
+        padding-top: 5px ;
+        margin-bottom: 50px;
+    }
+    #rect4::after {
+        content: "13%";
+        position: absolute;
+        top: 5px;
+        color: #1E1E1E;
+    }
+    .diagtext {
+        display: block;
+        position: absolute;
+        top: 400px;
+        padding: 0 50px;
+        text-align: left!important;
+    }
+    #section74 {
+        position: relative;
+        height: 100px;
+        top: 300px;
+    }
+    /* Lien */
+    .sectionlien {
+        position:relative;
+        top: 0px;
+        margin: 0px;
+        height: 300px;
+        display: flex;
+        justify-content: center;
+    }
+    .return {
+        position: absolute;
+        font-size: 1em;
+        color: #1E1E1E;
+        border: 1px #1E1E1E solid;
+        margin: 50px 0px;
+        top: 300px;
+    }
+
+
+    /* ------------------------------------ On passe à 2012 ------------------------------------ */
+
+    /* Container */
+    .infosScroll2 {
+        font-size: 1em;
+        margin: 150px 20%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        row-gap: 150px;
+        align-content: center;
+    }
+    /* texts */
+    .infosScroll2 section {
+        font-size: 4em;
+        margin-bottom: 100px;
+        margin-top: 100px;
+        width: 100vw;
+    }
+    .infosScroll2 h1 {
+        font-size: 3em;
+        font-weight:400;
+        text-align: center;
+        margin-bottom: 10px;
+        position: relative;
+
+    }
+    .infosScroll2 p {
+        font-size: 1em;
+        font-weight:normal;
+        text-align: center;
+        position: absolute;
+        width: 80%;
+        left: 0;
+        margin-left: 50%;
+        transform: translateX(-50%);
+    }
+    .infosScroll2 span {
+        display: block;
+        width: 200px;
+        font-weight:normal;
+        text-align: right;
+    }
+
+    /* Marqueur jaune */
+    .infosScroll2 section em {
+        background-color: rgb(238, 238, 153);
+    }
+    /* sous lignement */
+    .infosScroll2 .line:after {
+        display: block;
+        content: '';
+        width: 50%;
+        height: 1px;
+        background: black;
+        position: absolute;
+        bottom: 8%;
+        transform: rotate(-2deg);
+        left: 35%;
+    }
+    /* ---------------------------------- Les Sections ---------------------------------- */
+    #graph2012resp {
+        display: none;
+    }
+    
+    #graph2012 {
+        width: 80%;
+        left: 0;
+    }
+    /* Lien */
+    .sectionlien2 {
+        position:relative;
+        top: 0px;
+        margin: 0px;
+        height: 300px;
+        display: flex;
+        justify-content: center;
+    }
+    .return2 {
+        position: absolute;
+        font-size: 1em;
+        color: #1E1E1E;
+        border: 1px #1E1E1E solid;
+        margin: 50px 0px;
+        top: 300px;
+    }
+
+
+    /* ------------------------------------ On passe à 2017 ------------------------------------ */
+
+    /* Container */
+    .infosScroll3 {
+        font-size: 1em;
+        margin: 150px 20%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        row-gap: 150px;
+        align-content: center;
+    }
+    /* texts */
+    .infosScroll3 section:first-child {
+        font-size: 4em;
+        margin-bottom: 50%;
+        margin-top: 100px;
+        position: relative;
+        width: 100vw;
+        height: 500px;
+    }
+    .infosScroll3 section {
+        font-size: 4em;
+        margin-bottom: 200px;
+        margin-top: 150px;
+        position: relative;
+        width: 100vw;
+    }
+
+    .section44 {
+        padding-top: 400px;
+    }
+    .infosScroll3 h1 {
+        font-size: 3em;
+        font-weight:400;
+        text-align: center;
+        margin-bottom: 10px;
+        position: relative;
+
+    }
+    .infosScroll3 p {
+        font-size: 1em;
+        font-weight:normal;
+        text-align: center;
+        position: absolute;
+        width: 80%;
+        margin-left: 50%;
+        transform: translateX(-50%);
+        left: 0;
+    }
+    .infosScroll3 span {
+        display: block;
+        width: 200px;
+        font-weight:normal;
+        text-align: right;
+    }
+
+    /* Marqueur jaune */
+    .infosScroll3 section em {
+        background-color: rgb(238, 238, 153);
+    }
+    /* sous lignement */
+    .infosScroll3 .line:after {
+        display: block;
+        content: '';
+        width: 50%;
+        height: 1px;
+        background: black;
+        position: absolute;
+        bottom: 8%;
+        transform: rotate(-2deg);
+        left: 35%;
+    }
+    /* ---------------------------------- Les Sections ---------------------------------- */
+    #graph2017_1Resp {
+        display: none;
+    }
+    #graph2017_2Resp {
+        display: none;
+    }
+    #graph2017_3Resp {
+        display: none;
+    }
+    #graph2017_1 {
+        width: 80%;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    #graph2017_2 {
+        width: 70%;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    #graph2017_3 {
+        width: 50%;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    /* Lien */
+    .sectionlien3 {
+        position:relative;
+        top: 0px;
+        margin: 0px;
+        height: 300px;
+        display: flex;
+        justify-content: center;
+    }
+    .return3 {
+        position: absolute;
+        font-size: 1em;
+        color: #1E1E1E;
+        border: 1px #1E1E1E solid;
+        margin: 50px 0px;
+        top: 300px;
+    }
+
+        /* ------------------------------------ On passe à 2020 ------------------------------------ */
+
+    /* Container */
+    .infosScroll4 {
+        font-size: 1em;
+        margin: 150px 20%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        row-gap: 150px;
+        align-content: center;
+    }
+    /* texts */
+    .infosScroll4 section {
+        font-size: 4em;
+        margin-bottom: 100px;
+        margin-top: 100px;
+        position: relative;
+        width: 100vw;
+    }
+
+    .section2020 {
+        padding: 500px;
+    }
+    .infosScroll4 h1 {
+        font-size: 3em;
+        font-weight:400;
+        text-align: center;
+        margin-bottom: 10px;
+        position: relative;
+
+    }
+    .infosScroll4 p {
+        font-size: 1em;
+        font-weight:normal;
+        text-align: center;
+        position: absolute;
+        width: 80%;
+        margin-left: 50%;
+        transform: translateX(-50%);
+    }
+    .infosScroll4 span {
+        display: block;
+        width: 200px;
+        font-weight:normal;
+        text-align: right;
+    }
+
+    /* Marqueur jaune */
+    .infosScroll4 section em {
+        background-color: rgb(238, 238, 153);
+    }
+    /* sous lignement */
+    .infosScroll4 .line:after {
+        display: block;
+        content: '';
+        width: 50%;
+        height: 1px;
+        background: black;
+        position: absolute;
+        bottom: 8%;
+        transform: rotate(-2deg);
+        left: 35%;
+    }
+    /* ---------------------------------- Les Sections ---------------------------------- */
+    #graph2020Resp {
+        display: none;
+    }
+    #graph2020 {
+        position: absolute;
+        left: 0;
+        width: 100%;
+    }
+
+    /* Lien */
+    .sectionlien4 {
+        position:relative;
+        top: 0px;
+        margin: 0px;
+        height: 300px;
+        display: flex;
+        justify-content: center;
+    }
+    .return4 {
+        position: absolute;
+        font-size: 1em;
+        color: #1E1E1E;
+        border: 1px #1E1E1E solid;
+        margin: 50px 0px;
+        top: 300px;
+    }
+}
+/* ----------------------------------------------------- Media Responsive ----------------------------------------------------- */
+@media screen and ( max-width: 440px) {
+    /* Container */
+    .infosScroll {
+        display: block;
+        font-size: 1em;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: center;
+        line-height: 0.7;
+    }
+    /* texts */
+    .infosScroll section {
+        font-size: 4em;
+    }
+    #section24M {
+        position: relative;
+        top: 100px;
+        width:100%;
+        height: 100px;
+    }
+    .titre24M {
+        position: absolute;
+        top: 100px;
+        font-weight: 700px;
+    }
+
+    .text24M {
+        position: absolute;
+        display: block;
+        padding: 0 50px;
+        margin:0 ;
+        text-align: left!important;
+        top:45px;
+    }
+
+    .infosScroll h1 {
+        position:absolute;
+        font-size: 1em;
+        font-weight:bold;
+        text-align: center;
+        margin-bottom: 10px;
+        position: relative;
+        margin: 0% 10%;
+    }
+    .infosScroll p {
+        position:absolute;
+        font-size: 0.5em;
+        font-weight:normal;
+        text-align: center;
+        margin: 0% 10%;
+    }
+    .infosScroll span {
+        display: block;
+        width: 200px;
+        font-weight:normal;
+        text-align: right;
+        display: none;
+    }
+
+    /* Marqueur jaune */
+    .infosScroll section em {
+        background-color: rgb(238, 238, 153);
+        font-style: normal;
+    }
+    /* sous lignement */
+    .infosScroll .line:after {
+        display: block;
+        content: '';
+        width: 50%;
+        height: 1px;
+        background: black;
+        position: absolute;
+        bottom: 8%;
+        transform: rotate(-2deg);
+        left: 35%;
+    }
+    /* Graphique Pie */
+    #sectionPie {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        height: 400px;
+        top: 50px;
+    }
+    #fichePie {
+        display: none;
+    }
+    #piechart {
+        display: none;
+    }
+    #piechartresp {
+        position: relative;
+        display: block;
+        width: 250px;
+        top: 50px;
+    }
+    #section74 {
+        position: relative;
+        height: 100px;
+        top: 100px;
+    }
+    .titre74 {
+        position: absolute;
+        top: -3px;
+    }
+    .text74 {
+        position: absolute;
+        display: block;
+        text-align: left!important;
+    }
+    
+
+    /* Message de détail */
+    #detail1 {
+        font-size: 0.5em;
+        display: inline-block;
+        position: relative;
+        z-index: 10;
+        bottom: -20px;
+        padding-left: 0px;
+        text-align: left;
+        align-self: center;
+        width: 200px;
+    }
+    #Franke {
+        position: absolute;
+        bottom: 35vh;
+        right: -10%;
+        display: none;
+    }
+    /*  Rect */
+    #flexrect {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        row-gap: 10px;
+        top: 50px;
+    }
+    #diagramme {
+        position: absolute;
+        top: 200px;
+        width: 280px;
+        align-self: center;
+    }
+    .diagtext {
+        display: block;
+        position: absolute;
+        top: 310px;
+        text-align: left!important;
+        align-self: center;
+        width: 280px;
+    }
+    /* Lien */
+    .sectionlien {
+        position:relative;
+        top: 500px;
+        margin: 0px;
+        height: 150px;
+        display: flex;
+        justify-content: center;
+    }
+    a.return {
+        position: absolute;
+        font-size: 0.5em;
+        color: #1E1E1E;
+        border: 1px #1E1E1E solid;
+        margin-top: 0px;
+        top: 20px;
+    }
+
+
+    /* ------------------ On passe à 2012 ------------------ */
+    .infosScroll2 {
+        display: block;
+        font-size: 1em;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: center;
+        line-height: 0.7;
+    }
+    .infosScroll2 section {
+        font-size: 4em;
+    }
+    .infosScroll2 h1 {
+        position:absolute;
+        font-size: 1em;
+        font-weight:bold;
+        text-align: center;
+        margin-bottom: 10px;
+        position: relative;
+        margin: 0% 10%;
+    }
+    .infosScroll2 p {
+        position:absolute;
+        font-size: 0.5em;
+        font-weight:normal;
+        text-align: center;
+    }
+    .infosScroll2 span {
+        display: block;
+        width: 200px;
+        font-weight:normal;
+        text-align: right;
+        display: none;
+    }
+
+    /* Marqueur jaune */
+    .infosScroll2 section em {
+        background-color: rgb(238, 238, 153);
+        font-style: normal;
+    }
+    /* sous lignement */
+    .infosScroll2 .line:after {
+        display: block;
+        content: '';
+        width: 25%;
+        height: 1px;
+        background: black;
+        position: absolute;
+        bottom: 8%;
+        transform: rotate(-2deg);
+        left: 35%;
+    }
+    /* Par sections */
+    .section63 {
+        position: relative;
+        top: 100px;
+        width:100%;
+        height: 300px;
+    }
+    .titre63 {
+        position: absolute;
+        top: 100px;
+        font-weight: 700px;
+    }
+    .text63 {
+        position: absolute;
+        display: block;
+        padding: 0 50px;
+        margin:0 ;
+        text-align: left!important;
+        top:45px;
+    }
+
+    .section7M {
+        position: relative;
+        top: 0px;
+        width:100%;
+        height: 300px;
+    }
+    .titre7M {
+        position: absolute;
+        font-weight: 700px;
+    }
+    .text7M {
+        position: absolute;
+        display: block;
+        padding: 0 50px;
+        margin:0 ;
+        text-align: left!important;
+        top:45px;
+    }
+    .section69 {
+        position: relative;
+        top: -100px;
+        width:100%;
+        height: 300px;
+    }
+    .titre69 {
+        position: absolute;
+        font-weight: 700px;
+    }
+    .text69 {
+        position: absolute;
+        display: block;
+        padding: 0 50px;
+        margin:0 ;
+        text-align: left!important;
+        top:45px;
+    }
+    .sectionCourbe {
+        position:relative;
+        height: 400px;
+        top: 0px;
+    }
+    #graph2012resp {
+        width:70%;
+        position:absolute;
+    }
+    #graph2012 {
+        display: none;
+    }
+    .sectionlien2 {
+        position:relative;
+        top: -300px;
+        margin: 0px;
+        height: 0px;
+        display: flex;
+        justify-content: center;
+    }
+    .return2 {
+        position: absolute;
+        font-size: 0.5em;
+        color: #1E1E1E;
+        border: 1px #1E1E1E solid;
+        margin-top: 0px;
+        top: 130px;
+    }
+    /* ------------------ On passe à 2017 ------------------ */
+    .infosScroll3 {
+        display: block;
+        font-size: 1em;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: center;
+        line-height: 0.7;
+    }
+    .infosScroll3 section {
+        font-size: 4em;
+    }
+    .infosScroll3 h1 {
+        position:absolute;
+        font-size: 1em;
+        font-weight:bold;
+        text-align: center;
+        margin-bottom: 10px;
+        position: relative;
+        margin: 0% 10%;
+    }
+    .infosScroll3 p {
+        position:absolute;
+        font-size: 0.5em;
+        font-weight:normal;
+        text-align: center;
+    }
+    .infosScroll3 span {
+        display: block;
+        width: 200px;
+        font-weight:normal;
+        text-align: right;
+        display: none;
+    }
+    /* Marqueur jaune */
+    .infosScroll3 section em {
+        background-color: rgb(238, 238, 153);
+        font-style: normal;
+    }
+    /* sous lignement */
+    .infosScroll3 .line:after {
+        display: block;
+        content: '';
+        width: 60%;
+        height: 1px;
+        background: black;
+        position: absolute;
+        bottom: 8%;
+        transform: rotate(-2deg);
+        left: 35%;
+    }
+
+/*----------------- Par sections ----------------- */
+
+    .section2017_1 {
+        position:relative;
+        height: 800px;
+        top: 50px;
+    }
+    #graph2017_1Resp {
+        display: block;
+        width:100%;
+        height:100%;
+        position:absolute;
+    }
+    #graph2017_1 {
+        display: none;
+    }
+    .section119 {
+        position: relative;
+        top: 50px;
+        width:100%;
+        height: 300px;
+    }
+    .titre119 {
+        position: absolute;
+        top: 100px;
+        font-weight: 700px;
+    }
+    .text119 {
+        position: absolute;
+        display: block;
+        padding: 0 50px;
+        margin:0 ;
+        text-align: left!important;
+        top:45px;
+    }
+    .section2017_2 {
+        position:relative;
+        height:300px;
+        top: 0px;
+    }
+    #graph2017_2Resp {
+        bottom: -5%;
+        display: block;
+        height: 80%;
+        position:absolute;
+        right: -5%;
+
+    }
+    #graph2017_2 {
+        display: none;
+    }
+    .section44 {
+        position: relative;
+        top: 100px;
+        width:100%;
+        height: 300px;
+    }
+    .titre44 {
+        position: absolute;
+        top: 0px;
+        font-weight: 700px;
+    }
+    .text44 {
+        position: absolute;
+        display: block;
+        padding: 0 50px;
+        margin:0 ;
+        text-align: left!important;
+        top:45px;
+    }
+    .section2017_3 {
+        position:relative;
+        height: 400px;
+        top: -100px;
+    }
+    #graph2017_3Resp {
+        display: block;
+        width:100%;
+        height:100%;
+        position:absolute;
+        padding: 20px;
+    }
+    #graph2017_3 {
+        display: none;
+    }
+    .sectionlien3 {
+        position:relative;
+        top:-250px;
+        margin: 0px;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+    }
+    .return3 {
+        position: absolute;
+        font-size: 0.5em;
+        color: #1E1E1E;
+        border: 1px #1E1E1E solid;
+        margin: 50px 0px;
+        top: 150px;
+    }
+
+    /* ------------------ On passe à 2020 ------------------ */
+    .infosScroll4 {
+        display: block;
+        font-size: 1em;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: center;
+        line-height: 0.7;
+    }
+    .infosScroll4 section {
+        font-size: 4em;
+    }
+    .infosScroll4 h1 {
+        position:absolute;
+        font-size: 1em;
+        font-weight:bold;
+        text-align: center;
+        margin-bottom: 10px;
+        position: relative;
+        margin: 0% 10%;
+    }
+    .infosScroll4 p {
+        position:absolute;
+        font-size: 0.5em;
+        font-weight:normal;
+        text-align: center;
+    }
+    .infosScroll4 span {
+        display: block;
+        width: 200px;
+        font-weight:normal;
+        text-align: right;
+        display: none;
+    }
+    /* Marqueur jaune */
+    .infosScroll4 section em {
+        background-color: rgb(238, 238, 153);
+        font-style: normal;
+    }
+    /* sous lignement */
+    .infosScroll4 .line:after {
+        display: block;
+        content: '';
+        width: 25%;
+        height: 1px;
+        background: black;
+        position: absolute;
+        bottom: 8%;
+        transform: rotate(-2deg);
+        left: 35%;
+    }
+
+/*----------------- Par sections ----------------- */
+    .section79 {
+        position: relative;
+        top: 100px;
+        width:100%;
+        height: 300px;
+    }
+    .titre79 {
+        position: absolute;
+        top: 10px;
+        font-weight: 700px;
+    }
+    .text79 {
+        position: absolute;
+        display: block;
+        padding: 0 50px;
+        margin:0 ;
+        text-align: left!important;
+        top:45px;
+    }
+    .section344 {
+        position: relative;
+        top: 50px;
+        width:100%;
+        height: 300px;
+    }
+    .titre344 {
+        position: absolute;
+        top: -45px;
+        font-weight: 700px;
+    }
+    .text344 {
+        position: absolute;
+        display: block;
+        padding: 0 50px;
+        margin:0 ;
+        text-align: left!important;
+        top:0px;
+    }
+    .section2020 {
+        position:relative;
+        height: 350px;
+        top: 0px;
+    }
+   #graph2020 {
+        position:relative;
+        height:200px;
+        top: 0px;
+    }
+    #graph2020Resp {
+        display: block;
+        height:80%;
+        position:absolute;
+        left: -5%;
+    }
+    #graph2020 {
+        display: none;
+    }
+    .section31Md {
+        position: relative;
+        top: 0px;
+        width:100%;
+        height: 300px; 
+    }
+    .titre31Md {
+        position: absolute;
+        top: 100px;
+        font-weight: 700px;
+    }
+    .text31Md {
+        position: absolute;
+        display: block;
+        padding: 0 50px;
+        margin:0 ;
+        text-align: left!important;
+        top:145px;
+    }
+    .section2012 {
+        position: relative;
+        top: -50px;
+        width:100%;
+        height: 300px;
+    }
+    .titre2012 {
+        position: absolute;
+        top: 100px;
+        font-weight: 700px;
+    }
+    .text2012 {
+        position: absolute;
+        display: block;
+        padding: 0 50px;
+        margin:0 ;
+        text-align: left!important;
+        top:145px;
+    }
+    
+    /* Lien */
+    .sectionlien4 {
+        position:relative;
+        top: -210px;
+        margin: 0px;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+    }
+    .return4 {
+        position: absolute;
+        font-size: 0.5em;
+        color: #1E1E1E;
+        border: 1px #1E1E1E solid;
+        margin: 50px 0px;
+        top: 150px;
+    }
+}
