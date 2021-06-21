@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>TechnosWeb-DataViz</title>
+	<link rel="icon" type="image/png" sizes="16x16" href="./view/ressources/linternet.png">
+	<!-- <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="./view/style/style.css">
+    <link rel="stylesheet" href="./view/style/basPage.css">
+</head>
+<body>
+	<section id="mon_app">
+		<div class="nuit">
+			<div id="cursor"></div>
+		</div>
+		<header>
+			<div id="button_night">
+				<img src="./view/ressources/night.png" alt="">
+			</div>
+		</header>
+		<main class="page_container">
+			<div class="titre_container">
+				<h1>Evolution des technologies web</h1>
+				<h2>Explosion du web</h2>
+			</div>
+			<div class="nuage_container" :class="{'is-visible': !(toggleFront || toggleBack || toggleLangage || toggleFramework || toggleOutil || toggleServeur || toggleBDD)}">
+				<p class="class_categorie" id="tendance">tendance</p>
+				<p class="class_categorie" id="etabli">établi</p>
+				<p class="class_categorie" id="menacees">menacées</p>
+				<p class="class_categorie" id="emergeant">émergeant</p>
+				<span class="popularite">
+					<p class="titre_popularite">Popularité</p>
+					<span class="popularite_fleche"></span>
+				</span>
+				<span class="croissance">
+					<p class="titre_croissance">Croissance (%)</p>
+					<span class="croissance_fleche"></span>
+				</span>
+				<canvas class="canvas_color_point" id="canvas_tendance"></canvas>
+				<canvas class="canvas_color_point" id="canvas_etabli"></canvas>
+				<canvas class="canvas_color_point" id="canvas_menacees"></canvas>
+				<canvas class="canvas_color_point" id="canvas_emergeant"></canvas>
+				<!-- langage -->
+				<!-- front -->
+				<div v-if="css" class="point_container" id="css" :style="css" v-on:click="toggle0 = !toggle0" :class="{selectVisible : (toggleFront || toggleLangage)}">
+					<div class="infos_bulle_container" :class="{open : toggle0}" >
+						<div class="infos_bulle" >
+							<h3 class="titre_info">{{printInfo(0,0)}}</h3>
+							<div class="div_info_pts">
+								<p>Pts : </p>
+								<p>{{printInfo(0,1)}}</p>
+							</div>
+							<div class="div_info_plus">
+								<img src="" alt="">
+								<p>{{printInfo(0,2)}}</p>
+							</div>
+							<p class="category_info">{{printInfo(0,3)}}</p>
+						</div>
+					</div>
+					<button class="button_point"></button>
+					<p class="titre">CSS</p>
+				</div>
+				<div v-if="c" class="point_container" id="c" :style="c" v-on:click="toggle1 = !toggle1" :class="{selectVisible : (toggleFront || toggleLangage)}">
+					<div class="infos_bulle_container" :class="{open : toggle1}" >
+						<div class="infos_bulle" >
+							<h3 class="titre_info">{{printInfo(1,0)}}</h3>
+							<div class="div_info_pts">
+								<p>Pts : </p>
+								<p>{{printInfo(1,1)}}</p>
+							</div>
+							<div class="div_info_plus">
+								<img src="" alt="">
+								<p>{{printInfo(1,2)}}</p>
+							</div>
+							<p class="category_info">{{printInfo(1,3)}}</p>
+						</div>
+					</div>
+					<button class="button_point"></button>
+					<p class="titre">C</p>
+				</div>
+				<div v-if="cpp" class="point_container" id="cpp" :style="cpp" v-on:click="toggle2 = !toggle2" :class="{selectVisible : (toggleFront || toggleLangage)}">
+					<div class="infos_bulle_container" :class="{open : toggle2}" >
+						<div class="infos_bulle" >
+							<h3 class="titre_info">{{printInfo(2,0)}}</h3>
+							<div class="div_info_pts">
+								<p>Pts : </p>
+								<p>{{printInfo(2,1)}}</p>
+							</div>
+							<div class="div_info_plus">
+								<img src="" alt="">
+								<p>{{printInfo(2,2)}}</p>
+							</div>
+							<p class="category_info">{{printInfo(2,3)}}</p>
+						</div>
+					</div>
+					<button class="button_point"></button>
+					<p class="titre">C++</p>
+				</div>
+				<!-- back -->
+				<div v-if="python" class="point_container" id="python" :style="python" v-on:click="toggle3 = !toggle3" :class="{selectVisible : (toggleBack || toggleLangage)}">
+					<div class="infos_bulle_container" :class="{open : toggle3}" >
+						<div class="infos_bulle" >
+							<h3 class="titre_info">{{printInfo(3,0)}}</h3>
+							<div class="div_info_pts">
+								<p>Pts : </p>
+								<p>{{printInfo(3,1)}}</p>
+							</div>
+							<div class="div_info_plus">
+								<img src="" alt="">
+								<p>{{printInfo(3,2)}}</p>
+							</div>
+							<p class="category_info">{{printInfo(3,3)}}</p>
+						</div>
+					</div>
+					<button class="button_point"></button>
+					<p class="titre">Python</p>
+				</div>
+				<div v-if="php" class="point_container" id="php" :style="php" v-on:click="toggle4 = !toggle4" :class="{selectVisible : (toggleBack || toggleLangage)}">
+					<div class="infos_bulle_container" :class="{open : toggle4}" >
+						<div class="infos_bulle" >
+							<h3 class="titre_info">{{printInfo(4,0)}}</h3>
+							<div class="div_info_pts">
+								<p>Pts : </p>
+								<p>{{printInfo(4,1)}}</p>
+							</div>
+							<div class="div_info_plus">
+								<img src="" alt="">
+								<p>{{printInfo(4,2)}}</p>
+							</div>
+							<p class="category_info">{{printInfo(4,3)}}</p>
+						</div>
+					</div>
+					<button class="button_point"></button>
+					<p class="titre">PHP</p>
+				</div>
+				<div v-if="java" class="point_container" id="java" :style="java" v-on:click="toggle5 = !toggle5" :class="{selectVisible : (toggleBack || toggleLangage)}">
+					<div class="infos_bulle_container" :class="{open : toggle5}" >
+						<div class="infos_bulle" >
+							<h3 class="titre_info">{{printInfo(5,0)}}</h3>
+							<div class="div_info_pts">
+								<p>Pts : </p>
+								<p>{{printInfo(5,1)}}</p>
+							</div>
+							<div class="div_info_plus">
+								<img src="" alt="">
+								<p>{{printInfo(5,2)}}</p>
+							</div>
+							<p class="category_info">{{printInfo(5,3)}}</p>
+						</div>
+					</div>
+					<button class="button_point"></button>
+					<p class="titre">Java</p>
+				</div>
+				<div v-if="ruby" class="point_container" id="ruby" :style="ruby" v-on:click="toggle6 = !toggle6" :class="{selectVisible : (toggleBack || toggleLangage)}">
+					<div class="infos_bulle_container" :class="{open : toggle6}" >
+						<div class="infos_bulle" >
+							<h3 class="titre_info">{{printInfo(6,0)}}</h3>
+							<div class="div_info_pts">
+								<p>Pts : </p>
+								<p>{{printInfo(6,1)}}</p>
+							</div>
+							<div class="div_info_plus">
+								<img src="" alt="">
+								<p>{{printInfo(6,2)}}</p>
+							</div>
+							<p class="category_info">{{printInfo(6,3)}}</p>
+						</div>
+					</div>
+					<button class="button_point"></button>
+					<p class="titre">Ruby</p>
+				</div>
+				<div v-if="sql" class="point_container" id="SQL" :style="sql" v-on:click="toggle7 = !toggle7" :class="{selectVisible : (toggleBack || toggleLangage)}">
+					<div class="infos_bulle_container" :class="{open : toggle7}" >
+						<div class="infos_bulle" >
+							<h3 class="titre_info">{{printInfo(7,0)}}</h3>
+							<div class="div_info_pts">
+								<p>Pts : </p>
+								<p>{{printInfo(7,1)}}</p>
+							</div>
+							<div class="div_info_plus">
+								<img src="" alt="">
+								<p>{{printInfo(7,2)}}</p>
+							</div>
+							<p class="category_info">{{printInfo(7,3)}}</p>
+						</div>
+					</div>
+					<button class="button_point"></button>
+					<p class="titre">SQL</p>
+				</div>
+				<div v-if="csh" class="point_container" id="csh" :style="csh" v-on:click="toggle8 = !toggle8" :class="{selectVisible : (toggleBack || toggleLangage)}">
+					<div class="infos_bulle_container" :class="{open : toggle8}" >
+						<div class="infos_bulle" >
+							<h3 class="titre_info">{{printInfo(8,0)}}</h3>
+							<div class="div_info_pts">
+								<p>Pts : </p>
+								<p>{{printInfo(8,1)}}</p>
+							</div>
+							<div class="div_info_plus">
+								<img src="" alt="">
+								<p>{{printInfo(8,2)}}</p>
+							</div>
+							<p class="category_info">{{printInfo(8,3)}}</p>
+						</div>
+					</div>
+					<button class="button_point"></button>
+					<p class="titre">C#</p>
+				</div>
+				<!-- front/back -->
+				<div v-if="javaScript" class="point_container" id="javaScript" :style="javaScript" v-on:click="toggle9 = !toggle9" :class="{selectVisible : (toggleFront || toggleLangage)}">
+					<div class="infos_bulle_container" :class="{open : toggle9}" >
+						<div class="infos_bulle" >
+							<h3 class="titre_info">{{printInfo(9,0)}}</h3>
+							<div class="div_info_pts">
+								<p>Pts : </p>
+								<p>{{printInfo(9,1)}}</p>
+							</div>
+							<div class="div_info_plus">
+								<img src="" alt="">
+								<p>{{printInfo(9,2)}}</p>
+							</div>
+							<p class="category_info">{{printInfo(9,3)}}</p>
+						</div>
+					</div>
+					<button class="button_point"></button>
+					<p class="titre">JavaScript</p>
+				</div>
+				<div v-if="typeScript" class="point_container" id="typescript" :style="typeScript" v-on:click="toggle10 = !toggle10" :class="{selectVisible : (toggleFront || toggleLangage)}">
+					<div class="infos_bulle_container" :class="{open : toggle10}" >
+						<div class="infos_bulle" >
+							<h3 class="titre_info">{{printInfo(10,0)}}</h3>
+							<div class="div_info_pts">
+								<p>Pts : </p>
+								<p>{{printInfo(10,1)}}</p>
+							</div>
+							<div class="div_info_plus">
+								<img src="" alt="">
+								<p>{{printInfo(10,2)}}</p>
+							</div>
+							<p class="category_info">{{printInfo(10,3)}}</p>
+						</div>
+					</div>
+					<button class="button_point"></button>
+					<p class="titre">Type Script</p>
+				</div>
+				<div v-if="objectc" class="point_container" id="objectc" :style="objectc" v-on:click="toggle11 = !toggle11" :class="{selectVisible : (toggleFront || toggleLangage)}">
+					<div class="infos_bulle_container" :class="{open : toggle11}" >
+						<div class="infos_bulle" >
+							<h3 class="titre_info">{{printInfo(11,0)}}</h3>
+							<div class="div_info_pts">
+								<p>Pts : </p>
+								<p>{{printInfo(11,1)}}</p>
+							</div>
+							<div class="div_info_plus">
+								<img src="" alt="">
+								<p>{{printInfo(11,2)}}</p>
+							</div>
+							<p class="category_info">{{printInfo(11,3)}}</p>
+						</div>
+					</div>
+					<button class="button_point"></button>
+					<p class="titre">objective-c</p>
+				</div>
+				<div v-if="kotlin" class="point_container" id="kotlin" :style="kotlin" v-on:click="toggle12 = !toggle12" :class="{selectVisible : (toggleFront || toggleLangage)}">
+					<div class="infos_bulle_container" :class="{open : toggle12}" >
+						<div class="infos_bulle" >
+							<h3 class="titre_info">{{printInfo(12,0)}}</h3>
+							<div class="div_info_pts">
+								<p>Pts : </p>
+								<p>{{printInfo(12,1)}}</p>
+							</div>
+							<div class="div_info_plus">
+								<img src="" alt="">
+								<p>{{printInfo(12,2)}}</p>
+							</div>
+							<p class="category_info">{{printInfo(12,3)}}</p>
+						</div>
+					</div>
+					<button class="button_point"></button>
+					<p class="titre">Kotlin</p>
+				</div>
+				<!-- Framework -->
+				<!-- front -->
+				<div v-if="reactjs" class="point_container" id="reactjs" :style="reactjs" v-on:click="toggle13 = !toggle13" :class="{selectVisible : (toggleFront || toggleFramework)}">
+					<div class="infos_bulle_container" :class="{open : toggle13}" >
+						<div class="infos_bulle" >
+							<h3 class="titre_info">{{printInfo(13,0)}}</h3>
+							<div class="div_info_pts">
+								<p>Pts : </p>
+								<p>{{printInfo(13,1)}}</p>
+							</div>
+							<div class="div_info_plus">
+								<img src="" alt="">
+								<p>{{printInfo(13,2)}}</p>
+							</div>
+							<p class="category_info">{{printInfo(13,3)}}</p>
+						</div>
+					</div>
+					<button class="button_point"></button>
+					<p class="titre">React.js</p>
+				</div>
+				<div v-if="reactNatif" class="point_container" id="reactNatif" :style="reactNatif" v-on:click="toggle14 = !toggle14" :class="{selectVisible : (toggleFront || toggleFramework)}">
+					<div class="infos_bulle_container" :class="{open : toggle14}" >
+						<div class="infos_bulle" >
+							<h3 class="titre_info">{{printInfo(14,0)}}</h3>
+							<div class="div_info_pts">
+								<p>Pts : </p>
+								<p>{{printInfo(14,1)}}</p>
+							</div>
+							<div class="div_info_plus">
+								<img src="" alt="">
+								<p>{{printInfo(14,2)}}</p>
+							</div>
+							<p class="category_info">{{printInfo(14,3)}}</p>
+						</div>
+					</div>
+					<button class="button_point"></button>
+					<p class="titre">React Natif</p>
+				</div>
+				<div v-if="angularJS" class="point_container" id="angularJS" :style="angularJS" v-on:click="toggle15 = !toggle15" :class="{selectVisible : (toggleFront || toggleFramework)}">
+					<div class="infos_bulle_container" :class="{open : toggle15}" >
+						<div class="infos_bulle" >
+							<h3 class="titre_info">{{printInfo(15,0)}}</h3>
+							<div class="div_info_pts">
+								<p>Pts : </p>
+								<p>{{printInfo(15,1)}}</p>
+							</div>
+							<div class="div_info_plus">
+								<img src="" alt="">
+								<p>{{printInfo(15,2)}}</p>
+							</div>
+							<p class="category_info">{{printInfo(15,3)}}</p>
+						</div>
+					</div>
+					<button class="button_point"></button>
+					<p class="titre">Angular JS</p>
+				</div>
+				<div v-if="angular" class="point_container" id="angular" :style="angular" v-on:click="toggle16 = !toggle16" :class="{selectVisible : (toggleFront || toggleFramework)}">
+					<div class="infos_bulle_container" :class="{open : toggle16}" >
+						<div class="infos_bulle" >
+							<h3 class="titre_info">{{printInfo(16,0)}}</h3>
+							<div class="div_info_pts">
+								<p>Pts : </p>
+								<p>{{printInfo(16,1)}}</p>
+							</div>
+							<div class="div_info_plus">
+								<img src="" alt="">
+								<p>{{printInfo(16,2)}}</p>
+							</div>
+							<p class="category_info">{{printInfo(16,3)}}</p>
+						</div>
+					</div>
+					<button class="button_point"></button>
+					<p class="titre">Angular</p>
+				</div>
+				<div v-if="vue" class="point_container" id="vue" :style="vue" v-on:click="toggle17 = !toggle17" :class="{selectVisible : (toggleFront || toggleFramework)}">
+					<div class="infos_bulle_container" :class="{open : toggle17}" >
+						<div class="infos_bulle" >
+							<h3 class="titre_info">{{printInfo(17,0)}}</h3>
+							<div class="div_info_pts">
+								<p>Pts : </p>
+								<p>{{printInfo(17,1)}}</p>
+							</div>
+							<div class="div_info_plus">
+								<img src="" alt="">
+								<p>{{printInfo(17,2)}}</p>
+							</div>
+							<p class="category_info">{{printInfo(17,3)}}</p>
+						</div>
+					</div>
+					<button class="button_point"></button>
+					<p class="titre">Vue.js</p>
+				</div>
+				<div v-if="bootstrap" class="point_container" id="bootstrap" :style="bootstrap" v-on:click="toggle18 = !toggle18" :class="{selectVisible : (toggleFront || toggleFramework)}">
+					<div class="infos_bulle_container" :class="{open : toggle18}" >
+						<div class="infos_bulle" >
+							<h3 class="titre_info">{{printInfo(18,0)}}</h3>
+							<div class="div_info_pts">
+								<p>Pts : </p>
+								<p>{{printInfo(18,1)}}</p>
+							</div>
+							<div class="div_info_plus">
+								<img src="" alt="">
+								<p>{{printInfo(18,2)}}</p>
+							</div>
+							<p class="category_info">{{printInfo(18,3)}}</p>
+						</div>
+					</div>
+					<button class="button_point"></button>
+					<p class="titre">Bootstrap</p>
+				</div>
+				<div v-if="tailwind" class="point_container" id="tailwind" :style="tailwind" v-on:click="toggle19 = !toggle19" :class="{selectVisible : (toggleFront || toggleFramework)}">
+					<div class="infos_bulle_container" :class="{open : toggle19}" >
+						<div class="infos_bulle" >
+							<h3 class="titre_info">{{printInfo(19,0)}}</h3>
+							<div class="div_info_pts">
+								<p>Pts : </p>
+								<p>{{printInfo(19,1)}}</p>
+							</div>
+							<div class="div_info_plus">
+								<img src="" alt="">
+								<p>{{printInfo(19,2)}}</p>
+							</div>
+							<p class="category_info">{{printInfo(19,3)}}</p>
+						</div>
+					</div>
+					<button class="button_point"></button>
+					<p class="titre">Tailwind</p>
+				</div>
+				<!-- back -->
+				<div v-if="laravel" class="point_container" id="laravel" :style="laravel" v-on:click="toggle20 = !toggle20" :class="{selectVisible : (toggleBack || toggleFramework)}">
+					<div class="infos_bulle_container" :class="{open : toggle20}" >
+						<div class="infos_bulle" >
+							<h3 class="titre_info">{{printInfo(20,0)}}</h3>
+							<div class="div_info_pts">
+								<p>Pts : </p>
+								<p>{{printInfo(20,1)}}</p>
+							</div>
+							<div class="div_info_plus">
+								<img src="" alt="">
+								<p>{{printInfo(20,2)}}</p>
+							</div>
+							<p class="category_info">{{printInfo(20,3)}}</p>
+						</div>
+					</div>
+					<button class="button_point"></button>
+					<p class="titre">Laravel</p>
+				</div>
+				<div v-if="symphony" class="point_container" id="symphony" :style="symphony" v-on:click="toggle21 = !toggle21" :class="{selectVisible : (toggleBack || toggleFramework)}">
+					<div class="infos_bulle_container" :class="{open : toggle21}" >
+						<div class="infos_bulle" >
+							<h3 class="titre_info">{{printInfo(21,0)}}</h3>
+							<div class="div_info_pts">
+								<p>Pts : </p>
+								<p>{{printInfo(21,1)}}</p>
+							</div>
+							<div class="div_info_plus">
+								<img src="" alt="">
+								<p>{{printInfo(21,2)}}</p>
+							</div>
+							<p class="category_info">{{printInfo(21,3)}}</p>
+						</div>
+					</div>
+					<button class="button_point"></button>
+					<p class="titre">Symphony</p>
+				</div>
+				<div v-if="rails" class="point_container" id="rails" :style="rails" v-on:click="toggle22 = !toggle22" :class="{selectVisible : (toggleBack || toggleFramework)}">
+					<div class="infos_bulle_container" :class="{open : toggle22}" >
+						<div class="infos_bulle" >
+							<h3 class="titre_info">{{printInfo(22,0)}}</h3>
+							<div class="div_info_pts">
+								<p>Pts : </p>
+								<p>{{printInfo(22,1)}}</p>
+							</div>
+							<div class="div_info_plus">
+								<img src="" alt="">
+								<p>{{printInfo(22,2)}}</p>
+							</div>
+							<p class="category_info">{{printInfo(22,3)}}</p>
+						</div>
+					</div>
+					<button class="button_point"></button>
+					<p class="titre">Rails</p>
+				</div>
+				<div v-if="django" class="point_container" id="django" :style="django" v-on:click="toggle23 = !toggle23" :class="{selectVisible : (toggleBack || toggleFramework)}">
+					<div class="infos_bulle_container" :class="{open : toggle23}" >
+						<div class="infos_bulle" >
+							<h3 class="titre_info">{{printInfo(23,0)}}</h3>
+							<div class="div_info_pts">
+								<p>Pts : </p>
+								<p>{{printInfo(23,1)}}</p>
+							</div>
+							<div class="div_info_plus">
+								<img src="" alt="">
+								<p>{{printInfo(23,2)}}</p>
+							</div>
+							<p class="category_info">{{printInfo(23,3)}}</p>
+						</div>
+					</div>
+					<button class="button_point"></button>
+					<p class="titre">Django</p>
+				</div>
+				<div v-if="cakePHP" class="point_container" id="cakePHP" :style="cakePHP" v-on:click="toggle24 = !toggle24" :class="{selectVisible : (toggleBack || toggleFramework)}">
+					<div class="infos_bulle_container" :class="{open : toggle24}" >
+						<div class="infos_bulle" >
+							<h3 class="titre_info">{{printInfo(24,0)}}</h3>
+							<div class="div_info_pts">
+								<p>Pts : </p>
+								<p>{{printInfo(24,1)}}</p>
+							</div>
+							<div class="div_info_plus">
+								<img src="" alt="">
+								<p>{{printInfo(24,2)}}</p>
+							</div>
+							<p class="category_info">{{printInfo(24,3)}}</p>
+						</div>
+					</div>
+					<button class="button_point"></button>
+					<p class="titre">CakePHP</p>
+				</div>
+				<!-- front/back -->
+				<div v-if="net" class="point_container" id="net" :style="net" v-on:click="toggle25 = !toggle25" :class="{selectVisible : (toggleFront || toggleFramework)}">
+					<div class="infos_bulle_container" :class="{open : toggle25}" >
+						<div class="infos_bulle" >
+							<h3 class="titre_info">{{printInfo(25,0)}}</h3>
+							<div class="div_info_pts">
+								<p>Pts : </p>
+								<p>{{printInfo(25,1)}}</p>
+							</div>
+							<div class="div_info_plus">
+								<img src="" alt="">
+								<p>{{printInfo(25,2)}}</p>
+							</div>
+							<p class="category_info">{{printInfo(25,3)}}</p>
+						</div>
+					</div>
+					<button class="button_point"></button>
+					<p class="titre">.Net</p>
+				</div>
+				<!-- Serveur -->
+				<div v-if="apache" class="point_container" id="apache" :style="apache" v-on:click="toggle26 = !toggle26" :class="{selectVisible : (toggleServeur)}">
+					<div class="infos_bulle_container" :class="{open : toggle26}" >
+						<div class="infos_bulle" >
+							<h3 class="titre_info">{{printInfo(26,0)}}</h3>
+							<div class="div_info_pts">
+								<p>Pts : </p>
+								<p>{{printInfo(26,1)}}</p>
+							</div>
+							<div class="div_info_plus">
+								<img src="" alt="">
+								<p>{{printInfo(26,2)}}</p>
+							</div>
+							<p class="category_info">{{printInfo(26,3)}}</p>
+						</div>
+					</div>
+					<button class="button_point"></button>
+					<p class="titre">Apache</p>
+				</div>
+				<div v-if="nginx" class="point_container" id="nginx" :style="nginx" v-on:click="toggle27 = !toggle27" :class="{selectVisible : (toggleServeur)}">
+					<div class="infos_bulle_container" :class="{open : toggle27}" >
+						<div class="infos_bulle" >
+							<h3 class="titre_info">{{printInfo(27,0)}}</h3>
+							<div class="div_info_pts">
+								<p>Pts : </p>
+								<p>{{printInfo(27,1)}}</p>
+							</div>
+							<div class="div_info_plus">
+								<img src="" alt="">
+								<p>{{printInfo(27,2)}}</p>
+							</div>
+							<p class="category_info">{{printInfo(27,3)}}</p>
+						</div>
+					</div>
+					<button class="button_point"></button>
+					<p class="titre">Nginx</p>
+				</div>
+				<div v-if="iis" class="point_container" id="iis" :style="iis" v-on:click="toggle28 = !toggle28" :class="{selectVisible : (toggleServeur)}">
+					<div class="infos_bulle_container" :class="{open : toggle28}" >
+						<div class="infos_bulle" >
+							<h3 class="titre_info">{{printInfo(28,0)}}</h3>
+							<div class="div_info_pts">
+								<p>Pts : </p>
+								<p>{{printInfo(28,1)}}</p>
+							</div>
+							<div class="div_info_plus">
+								<img src="" alt="">
+								<p>{{printInfo(28,2)}}</p>
+							</div>
+							<p class="category_info">{{printInfo(28,3)}}</p>
+						</div>
+					</div>
+					<button class="button_point"></button>
+					<p class="titre">IIS</p>
+				</div>
+				<!-- BDD -->
+				<div v-if="mySQL" class="point_container" id="mySQL" :style="mySQL" v-on:click="toggle29 = !toggle29" :class="{selectVisible : (toggleBDD)}">
+					<div class="infos_bulle_container" :class="{open : toggle29}" >
+						<div class="infos_bulle" >
+							<h3 class="titre_info">{{printInfo(29,0)}}</h3>
+							<div class="div_info_pts">
+								<p>Pts : </p>
+								<p>{{printInfo(29,1)}}</p>
+							</div>
+							<div class="div_info_plus">
+								<img src="" alt="">
+								<p>{{printInfo(29,2)}}</p>
+							</div>
+							<p class="category_info">{{printInfo(29,3)}}</p>
+						</div>
+					</div>
+					<button class="button_point"></button>
+					<p class="titre">mySQL</p>
+				</div>
+				<div v-if="mongodb" class="point_container" id="mongodb" :style="mongodb" v-on:click="toggle30 = !toggle30" :class="{selectVisible : (toggleBDD)}">
+					<div class="infos_bulle_container" :class="{open : toggle30}" >
+						<div class="infos_bulle" >
+							<h3 class="titre_info">{{printInfo(30,0)}}</h3>
+							<div class="div_info_pts">
+								<p>Pts : </p>
+								<p>{{printInfo(30,1)}}</p>
+							</div>
+							<div class="div_info_plus">
+								<img src="" alt="">
+								<p>{{printInfo(30,2)}}</p>
+							</div>
+							<p class="category_info">{{printInfo(30,3)}}</p>
+						</div>
+					</div>
+					<button class="button_point"></button>
+					<p class="titre">MongoDB</p>
+				</div>
+				<div v-if="SQLServer" class="point_container" id="SQLServer" :style="SQLServer" v-on:click="toggle31 = !toggle31" :class="{selectVisible : (toggleBDD)}">
+					<div class="infos_bulle_container" :class="{open : toggle31}" >
+						<div class="infos_bulle" >
+							<h3 class="titre_info">{{printInfo(31,0)}}</h3>
+							<div class="div_info_pts">
+								<p>Pts : </p>
+								<p>{{printInfo(31,1)}}</p>
+							</div>
+							<div class="div_info_plus">
+								<img src="" alt="">
+								<p>{{printInfo(31,2)}}</p>
+							</div>
+							<p class="category_info">{{printInfo(31,3)}}</p>
+						</div>
+					</div>
+					<button class="button_point"></button>
+					<p class="titre">SQLServer</p>
+				</div>
+				<div v-if="postgreSQL" class="point_container" id="postgreSQL" :style="postgreSQL" v-on:click="toggle32 = !toggle32" :class="{selectVisible : (toggleBDD)}">
+					<div class="infos_bulle_container" :class="{open : toggle32}" >
+						<div class="infos_bulle" >
+							<h3 class="titre_info">{{printInfo(32,0)}}</h3>
+							<div class="div_info_pts">
+								<p>Pts : </p>
+								<p>{{printInfo(32,1)}}</p>
+							</div>
+							<div class="div_info_plus">
+								<img src="" alt="">
+								<p>{{printInfo(32,2)}}</p>
+							</div>
+							<p class="category_info">{{printInfo(32,3)}}</p>
+						</div>
+					</div>
+					<button class="button_point"></button>
+					<p class="titre">PostgreSQL</p>
+				</div>
+				<div v-if="oracle" class="point_container" id="oracle" :style="oracle" v-on:click="toggle33 = !toggle33" :class="{selectVisible : (toggleBDD)}">
+					<div class="infos_bulle_container" :class="{open : toggle33}" >
+						<div class="infos_bulle" >
+							<h3 class="titre_info">{{printInfo(33,0)}}</h3>
+							<div class="div_info_pts">
+								<p>Pts : </p>
+								<p>{{printInfo(33,1)}}</p>
+							</div>
+							<div class="div_info_plus">
+								<img src="" alt="">
+								<p>{{printInfo(33,2)}}</p>
+							</div>
+							<p class="category_info">{{printInfo(33,3)}}</p>
+						</div>
+					</div>
+					<button class="button_point"></button>
+					<p class="titre">Oracle</p>
+				</div>
+				<!-- Outils -->
+				<div v-if="adobeFlash" class="point_container" id="adobeFlash" :style="adobeFlash" v-on:click="toggle34 = !toggle34" :class="{selectVisible : (toggleOutil)}">
+					<div class="infos_bulle_container" :class="{open : toggle34}" >
+						<div class="infos_bulle" >
+							<h3 class="titre_info">{{printInfo(34,0)}}</h3>
+							<div class="div_info_pts">
+								<p>Pts : </p>
+								<p>{{printInfo(34,1)}}</p>
+							</div>
+							<div class="div_info_plus">
+								<img src="" alt="">
+								<p>{{printInfo(34,2)}}</p>
+							</div>
+							<p class="category_info">{{printInfo(34,3)}}</p>
+						</div>
+					</div>
+					<button class="button_point"></button>
+					<p class="titre">Adobe Flash</p>
+				</div>
+				<div v-if="wordpress" class="point_container" id="wordpress" :style="wordpress" v-on:click="toggle35 = !toggle35" :class="{selectVisible : (toggleOutil)}">
+					<div class="infos_bulle_container" :class="{open : toggle35}" >
+						<div class="infos_bulle" >
+							<h3 class="titre_info">{{printInfo(35,0)}}</h3>
+							<div class="div_info_pts">
+								<p>Pts : </p>
+								<p>{{printInfo(35,1)}}</p>
+							</div>
+							<div class="div_info_plus">
+								<img src="" alt="">
+								<p>{{printInfo(35,2)}}</p>
+							</div>
+							<p class="category_info">{{printInfo(35,3)}}</p>
+						</div>
+					</div>
+					<button class="button_point"></button>
+					<p class="titre">Wordpress</p>
+				</div>
+				<div v-if="shopify" class="point_container" id="shopify" :style="shopify" v-on:click="toggle36 = !toggle36" :class="{selectVisible : (toggleOutil)}">
+					<div class="infos_bulle_container" :class="{open : toggle36}" >
+						<div class="infos_bulle" >
+							<h3 class="titre_info">{{printInfo(36,0)}}</h3>
+							<div class="div_info_pts">
+								<p>Pts : </p>
+								<p>{{printInfo(36,1)}}</p>
+							</div>
+							<div class="div_info_plus">
+								<img src="" alt="">
+								<p>{{printInfo(36,2)}}</p>
+							</div>
+							<p class="category_info">{{printInfo(36,3)}}</p>
+						</div>
+					</div>
+					<button class="button_point"></button>
+					<p class="titre">Shopify</p>
+				</div>
+				<div v-if="joomla" class="point_container" id="joomla" :style="joomla" v-on:click="toggle37 = !toggle37" :class="{selectVisible : (toggleOutil)}">
+					<div class="infos_bulle_container" :class="{open : toggle37}" >
+						<div class="infos_bulle" >
+							<h3 class="titre_info">{{printInfo(37,0)}}</h3>
+							<div class="div_info_pts">
+								<p>Pts : </p>
+								<p>{{printInfo(37,1)}}</p>
+							</div>
+							<div class="div_info_plus">
+								<img src="" alt="">
+								<p>{{printInfo(37,2)}}</p>
+							</div>
+							<p class="category_info">{{printInfo(37,3)}}</p>
+						</div>
+					</div>
+					<button class="button_point"></button>
+					<p class="titre">Joomla</p>
+				</div>
+				<div v-if="nodejs" class="point_container" id="nodejs" :style="nodejs" v-on:click="toggle38 = !toggle38" :class="{selectVisible : (toggleOutil)}">
+					<div class="infos_bulle_container" :class="{open : toggle38}" >
+						<div class="infos_bulle" >
+							<h3 class="titre_info">{{printInfo(38,0)}}</h3>
+							<div class="div_info_pts">
+								<p>Pts : </p>
+								<p>{{printInfo(38,1)}}</p>
+							</div>
+							<div class="div_info_plus">
+								<img src="" alt="">
+								<p>{{printInfo(38,2)}}</p>
+							</div>
+							<p class="category_info">{{printInfo(38,3)}}</p>
+						</div>
+					</div>
+					<button class="button_point"></button>
+					<p class="titre">NodeJS</p>
+				</div>
+				<div v-if="lowCode" class="point_container" id="lowCode" :style="lowCode" v-on:click="toggle39 = !toggle39" :class="{selectVisible : (toggleOutil)}">
+					<div class="infos_bulle_container" :class="{open : toggle39}" >
+						<div class="infos_bulle" >
+							<h3 class="titre_info">{{printInfo(39,0)}}</h3>
+							<div class="div_info_pts">
+								<p>Pts : </p>
+								<p>{{printInfo(39,1)}}</p>
+							</div>
+							<div class="div_info_plus">
+								<img src="" alt="">
+								<p>{{printInfo(39,2)}}</p>
+							</div>
+							<p class="category_info">{{printInfo(39,3)}}</p>
+						</div>
+					</div>
+					<button class="button_point"></button>
+					<p class="titre">Low / No Code</p>
+				</div>
+				<div v-if="git" class="point_container" id="git" :style="git" v-on:click="toggle40 = !toggle40" :class="{selectVisible : (toggleOutil)}">
+					<div class="infos_bulle_container" :class="{open : toggle40}" >
+						<div class="infos_bulle" >
+							<h3 class="titre_info">{{printInfo(40,0)}}</h3>
+							<div class="div_info_pts">
+								<p>Pts : </p>
+								<p>{{printInfo(40,1)}}</p>
+							</div>
+							<div class="div_info_plus">
+								<img src="" alt="">
+								<p>{{printInfo(40,2)}}</p>
+							</div>
+							<p class="category_info">{{printInfo(40,3)}}</p>
+						</div>
+					</div>
+					<button class="button_point"></button>
+					<p class="titre">Git</p>
+				</div>
+			</div>
+			<img id="legende" src="./view/ressources/legende.svg" alt="">
+			<div class="selecteur_container">
+				<button id="select_recharge" class="selecteur_recharge" v-on:click="rechargeSelect">
+					<img src="./view/ressources/rechargeSelecteur.svg" alt="">
+				</button>
+				<div class="selecteurs">
+					<button id="select_front" class="selecteur" v-on:click="toggleFront = !toggleFront" :class="{selectCheck : toggleFront}">
+						Front-end
+					</button>
+					<button id="select_back" class="selecteur" v-on:click="toggleBack = !toggleBack" :class="{selectCheck : toggleBack}">
+						Back-end
+					</button>
+					<button id="select_langage" class="selecteur" v-on:click="toggleLangage = !toggleLangage" :class="{selectCheck : toggleLangage}">
+						Langage
+					</button>
+					<button id="select_framework" class="selecteur" v-on:click="toggleFramework = !toggleFramework" :class="{selectCheck : toggleFramework}">
+						Framework
+					</button>
+					<button id="select_outil" class="selecteur" v-on:click="toggleOutil = !toggleOutil" :class="{selectCheck : toggleOutil}">
+						Outil
+					</button>
+					<button id="select_serveur" class="selecteur" v-on:click="toggleServeur = !toggleServeur" :class="{selectCheck : toggleServeur}">
+						Serveur
+					</button>
+					<button id="select_BDD" class="selecteur" v-on:click="toggleBDD = !toggleBDD" :class="{selectCheck : toggleBDD}">
+						BDD
+					</button>
+				</div>
+			</div>
+			<div class="bar_container">
+				<input v-model="timeBar" type="range" id="time_bar" @change="fetchData(); chargeInfo(); printPage()" name="time" min="1" max="4">
+				<div class="marckers_line">
+					<div class="marcker_line">
+						<span class="bar_2004"></span>
+						<p>2004</p>
+					</div>
+					<div class="marcker_line">
+						<span class="bar_2012"></span>
+						<p>2012</p>
+					</div>
+					<div class="marcker_line">
+						<span class="bar_2017"></span>
+						<p>2017</p>
+					</div>
+					<div class="marcker_line">
+						<span class="bar_2020"></span>
+						<p>2020</p>
+					</div>
+				</div>
+			</div>
+			<div class="plus_info">
+				<img src="./view/ressources/plusInfos.svg" alt="">
+			</div>
+		</main>
+		<div class="main_page" v-html='mainPage'>
+			{{mainPage}}
+		</div>
+		<footer>
+			<p>Ce site a été réalisé à des fins pédagogiques dans le cadre du cursus Bachelor Web de l’école HETIC. Les contenus et données présentés n'ont pas fait l'objet d'une demande de droit d'utilisation. Ce site ne sera en aucun cas exploité à des fins commerciales</p>
+		</footer>
+	</section>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="./view/script/vueApp.js"></script>
+    <script src="./view/script/app.js"></script>
+</body>
+</html>
